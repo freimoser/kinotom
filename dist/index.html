@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#16384b">
+  <meta name="description" content="KinoTom: kuratierte KI-Kurzfilme direkt von ihren Filmschaffenden auf YouTube entdecken.">
+  <title>KinoTom | KI-Kurzfilme entdecken</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2316384b'/%3E%3Cpath d='M12 15h40v34H12z' fill='none' stroke='%23e8b05b' stroke-width='4'/%3E%3Cpath d='m28 24 14 8-14 8z' fill='%23e8b05b'/%3E%3C/svg%3E">
+  <style>
+    :root{color-scheme:light;--ink:#243b49;--muted:#647e8b;--line:#b8cad2;--blue:#2e617a;--deep:#16384b;--gold:#e8b05b;--paper:#f3f7f8;--row:#e7f0f4;--row-alt:#f5f9fa}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#183f56;color:var(--ink);font:15px/1.45 Arial,Helvetica,sans-serif}button,input{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #d68b22;outline-offset:2px}
+    .site{max-width:1180px;min-height:100vh;margin:auto;background:var(--paper);box-shadow:0 0 32px #071f2b80}
+    .masthead{height:142px;padding:28px 28px 20px;position:relative;overflow:hidden;background:linear-gradient(110deg,#102b3c 0%,#24556b 58%,#537d8e 100%);color:#fff;border-bottom:4px solid #8ab4c4}
+    .masthead::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#ffffff05 0 1px,transparent 1px 34px);opacity:.55}.masthead::after{content:"";position:absolute;width:380px;height:190px;right:38px;top:-50px;border:1px solid #ffffff28;transform:rotate(-13deg);box-shadow:0 0 0 22px #ffffff08,0 0 0 45px #ffffff06}
+    .brand{position:relative;z-index:1;display:flex;align-items:center;gap:16px;width:max-content;text-decoration:none}.brand-mark{width:65px;height:65px;border:3px solid var(--gold);display:grid;place-items:center;background:#0e2b3b;box-shadow:4px 4px 0 #0a2330}.brand-mark svg{width:31px;fill:var(--gold)}.brand-name{font-size:42px;line-height:1;font-weight:900;letter-spacing:0;text-transform:uppercase;text-shadow:2px 3px 0 #0c2c3e}.brand-name b{color:var(--gold)}.brand-caption{display:block;margin-top:9px;color:#c6d8df;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.11em}.masthead-note{position:absolute;z-index:1;right:26px;bottom:20px;color:#d7e7ec;font-size:12px;text-transform:uppercase}
+    .topbar{display:flex;align-items:stretch;gap:0;min-height:48px;padding:0 16px;background:linear-gradient(#6d9aac,#2b617b 49%,#1c4961 50%,#3e7289);border-bottom:2px solid #164054;color:#fff}.topbar nav{display:flex;align-items:stretch}.topbar nav button{background:none;border:0;border-right:1px solid #ffffff24;color:#fff;padding:0 18px;font-size:13px;font-weight:800;text-transform:uppercase}.topbar nav button:hover,.topbar nav button.active{background:#103d54}.search{display:flex;align-items:center;gap:7px;margin:auto 0 auto auto;width:min(320px,36vw);height:32px;padding:0 10px;background:#f7fbfc;border:1px solid #8ea9b7;color:#42647a}.search svg{width:17px;flex:none}.search input{width:100%;min-width:0;border:0;outline:0;background:none;color:#263d49;font-size:14px}
+    .layout{display:grid;grid-template-columns:205px minmax(0,1fr);gap:22px;padding:19px 23px 36px}.sidebar{border-right:1px solid #d4e1e6;padding-right:0}.side-head,.bar{display:flex;align-items:center;justify-content:space-between;min-height:36px;padding:7px 12px;background:linear-gradient(#8db4c2,#2d6179 56%,#24536b);color:#fff;font-size:14px;font-weight:700;border:1px solid #5c899b;text-shadow:0 1px #173c50}.side-head span,.bar strong::before{display:inline-block;width:8px;height:8px;margin-right:9px;background:#e9f5f7;border:1px solid #b9d4dd}.side-section{padding:11px 0 13px;border-bottom:1px solid #d1e0e5}.side-label{padding:0 12px 4px;color:#62808e;font-weight:700}.side-section button{display:block;width:100%;padding:6px 12px 6px 24px;text-align:left;background:none;border:0;border-bottom:1px solid #dce6e9;color:#486777}.side-section button:hover,.side-section button.selected{background:#d5e7ee;color:#153d52;font-weight:700}.side-note{margin:19px 9px;color:#66818f;font-size:12px;line-height:1.55}
+    main{min-width:0}.bar{height:38px}.bar small{font-size:12px;color:#e7f2f5;font-weight:400}.bar .bar-actions{display:flex;align-items:center;gap:7px}.icon-btn{width:27px;height:25px;display:grid;place-items:center;border:1px solid #9dc0cc;background:#4b7d92;color:#fff;padding:3px}.icon-btn.active{background:#eef7f9;color:#234e61}.icon-btn svg{width:17px;height:17px}.intro-line{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:9px 4px 10px;color:#527080;font-size:13px}.intro-line strong{color:#365b6c}.feature-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px;background:#e4eef2;padding:14px;border:1px solid #c3d6de;margin-bottom:14px}.feature{display:block;min-width:0;text-decoration:none;cursor:pointer}.feature img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#294c61;border:3px solid #fff;box-shadow:0 0 0 1px #8ca9b8}.feature:hover img{box-shadow:0 0 0 2px #d98f2b}.feature span{display:block;margin-top:7px;font-size:12px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.feature small{display:block;color:#708896;font-size:11px}
+    .catalog-head{margin-top:1px}.table-wrap{overflow-x:auto;border:1px solid #c7d9df;border-top:0}.film-table{width:100%;border-collapse:collapse;table-layout:fixed}.film-table th{height:31px;background:#d7e8ee;color:#5d7a89;font-size:12px;text-align:left;font-weight:400}.film-table th:first-child{padding-left:14px}.film-table th:nth-child(1){width:55%}.film-table th:nth-child(2){width:17%}.film-table th:nth-child(3){width:12%}.film-table th:nth-child(4){width:16%}.film-table td{height:43px;padding:6px 5px;font-size:13px}.film-table td:first-child{padding-left:14px}.film-table tbody tr:nth-child(odd){background:var(--row-alt)}.film-table tbody tr:nth-child(even){background:var(--row)}.film-table tbody tr:hover{background:#d0e4ec}.film-title{display:flex;align-items:center;gap:9px;min-width:0}.film-title img{width:44px;height:27px;object-fit:cover;border:1px solid #b6cbd3;flex:none}.film-title button{min-width:0;padding:0;border:0;background:none;color:#305d72;font-weight:700;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.film-title button:hover{text-decoration:underline}.source-badge{display:inline-block;padding:2px 6px;border:1px solid #d3a366;background:#fff1d9;color:#81551b;font-size:11px;font-weight:700}.table-muted{color:#78909b}.grid-view{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;padding:14px;border:1px solid #c7d9df;border-top:0;background:#ecf3f5}.grid-card{min-width:0;background:#fff;border:1px solid #c3d5dd;box-shadow:0 1px 2px #41647722}.grid-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}.grid-card div{padding:9px}.grid-card button{display:block;padding:0;border:0;background:none;text-align:left;color:#305d72;font-weight:700}.grid-card small{color:#6c8591}.empty{padding:34px 14px;color:#597787;text-align:center;background:#edf4f7;border:1px solid #c7d9df;border-top:0}.section-footer{display:flex;justify-content:space-between;padding:10px 2px;color:#6b8490;font-size:12px}
+    footer{padding:18px 23px 24px;border-top:1px solid #cadce2;color:#5f7b89;font-size:12px;background:#e8f0f3}footer strong{color:#355a6c}.modal{border:0;padding:0;width:min(650px,calc(100vw - 28px));max-height:calc(100vh - 28px);background:#f3f7f8;color:var(--ink);box-shadow:0 14px 50px #0a2634aa}.modal::backdrop{background:#102b3bc9}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;color:#fff;background:linear-gradient(#648fa1,#24546d)}.modal-head h2{margin:0;font-size:18px}.modal-close{border:0;background:none;color:#fff;font-size:26px;line-height:1}.modal-body{display:grid;grid-template-columns:210px minmax(0,1fr);gap:17px;padding:18px}.modal-body img{width:100%;aspect-ratio:16/10;object-fit:cover;border:4px solid #fff;box-shadow:0 0 0 1px #b4c9d1}.modal-body p{margin:0 0 10px}.meta{display:grid;grid-template-columns:76px 1fr;gap:4px 8px;margin:12px 0 17px;font-size:13px}.meta dt{color:#6c8794}.meta dd{margin:0}.watch-link{display:inline-flex;gap:9px;align-items:center;padding:9px 13px;background:#d38a2f;color:#fff;text-decoration:none;font-weight:700;border:1px solid #9e641d}.watch-link:hover{background:#b87626}.watch-link svg{width:15px;height:15px}.fine{font-size:12px;color:#6c8794;margin-top:12px!important}
+    @media(max-width:780px){.masthead{height:124px;padding:24px 16px}.masthead-note{display:none}.brand-name{font-size:32px}.brand-mark{width:55px;height:55px}.topbar{padding:0 8px;flex-wrap:wrap}.topbar nav{width:100%;overflow:auto}.topbar nav button{white-space:nowrap;height:43px;padding:0 13px}.search{width:100%;margin:0 0 8px}.layout{grid-template-columns:1fr;padding:12px;gap:11px}.sidebar{border:0;padding:0}.side-head{display:none}.side-section{display:flex;overflow:auto;padding:0;border:0}.side-section:nth-of-type(n+3){display:none}.side-label{display:none}.side-section button{width:auto;white-space:nowrap;padding:7px 12px;border:1px solid #cadce3}.side-note{display:none}.feature-strip{gap:8px;padding:9px}.feature:nth-child(n+4){display:none}.feature-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.bar small{display:none}.film-table th:nth-child(1){width:55%}.film-table th:nth-child(2){width:22%}.film-table th:nth-child(3){width:23%}.film-table th:nth-child(4),.film-table td:nth-child(4){display:none}.grid-view{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:520px){.brand-caption{font-size:10px}.film-table th:nth-child(3),.film-table td:nth-child(3){display:none}.film-table th:nth-child(1){width:69%}.film-table th:nth-child(2){width:31%}.film-title img{width:35px;height:25px}.film-table td{font-size:12px}.film-title{gap:6px}.feature span{font-size:11px}.intro-line{align-items:flex-start}.modal-body{grid-template-columns:1fr}.modal-body img{max-width:300px}}
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header class="masthead">
+      <a class="brand" href="#start" aria-label="KinoTom Startseite">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 3h18v26H7zM0 8h4v5H0zm0 11h4v5H0zM28 8h4v5h-4zm0 11h4v5h-4z" fill-rule="evenodd"/><path d="m13 10 11 6-11 6z" fill="#102b3c"/></svg></span>
+        <span><span class="brand-name">Kino<b>Tom</b></span><span class="brand-caption">Das Archiv für KI-Kurzfilme</span></span>
+      </a>
+      <div class="masthead-note">Unabhängig kuratiert · Direkt zu den Filmschaffenden</div>
+    </header>
+    <div class="topbar">
+      <nav aria-label="Hauptnavigation">
+        <button type="button" class="active" data-nav="alle">Start</button>
+        <button type="button" data-nav="neu">Neueste</button>
+        <button type="button" data-nav="auswahl">Auswahl</button>
+        <button type="button" data-nav="ueber">Über KinoTom</button>
+      </nav>
+      <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="Film oder Filmschaffende suchen" aria-label="Filme suchen"></label>
+    </div>
+    <div class="layout" id="start">
+      <aside class="sidebar" aria-label="Katalogfilter">
+        <div class="side-head"><div><span></span>Navigation</div></div>
+        <div class="side-section"><div class="side-label">Entdecken</div><button class="selected" type="button" data-filter="alle">Alle Kurzfilme</button><button type="button" data-filter="neu">Neueste</button><button type="button" data-filter="auswahl">Redaktionelle Auswahl</button></div>
+        <div class="side-section"><div class="side-label">Genres</div><button type="button" data-filter="Sci-Fi">Sci-Fi</button><button type="button" data-filter="Fantasy">Fantasy</button><button type="button" data-filter="Mystery">Mystery</button><button type="button" data-filter="Drama">Drama</button></div>
+        <p class="side-note">Alle Filme stammen von ihren YouTube-Kanälen. KinoTom speichert und streamt keine Videos selbst.</p>
+      </aside>
+      <main>
+        <section aria-labelledby="feature-title" id="feature-section">
+          <div class="bar"><strong id="feature-title">Im Fokus</strong><small>KI-Filmkunst aus unabhängigen Kanälen</small></div>
+          <div class="intro-line"><strong>Fünf Filme für den Anfang</strong><span>Zum Film auf YouTube</span></div>
+          <div class="feature-strip" id="features"></div>
+        </section>
+        <section aria-labelledby="catalog-title">
+          <div class="bar catalog-head"><strong id="catalog-title">Alle KI-Kurzfilme</strong><div class="bar-actions"><small id="count">5 Einträge</small><button type="button" class="icon-btn active" id="list-view" title="Listenansicht" aria-label="Listenansicht" aria-pressed="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h3v3H4zm5 0h11v3H9zM4 11h3v3H4zm5 0h11v3H9zM4 17h3v3H4zm5 0h11v3H9z"/></svg></button><button type="button" class="icon-btn" id="grid-view" title="Kachelansicht" aria-label="Kachelansicht" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg></button></div></div>
+          <div id="results"></div>
+          <div class="section-footer"><span>Quelle: öffentliche YouTube-Seiten der Filmschaffenden</span><span id="result-summary">5 Filme</span></div>
+        </section>
+      </main>
+    </div>
+    <footer><strong>KinoTom</strong> · Privater Entwurf · Die Titel führen zu YouTube. Bild- und Filmrechte verbleiben bei den jeweiligen Filmschaffenden. Der Projektname ist noch nicht abschließend geprüft.</footer>
+  </div>
+  <dialog class="modal" id="film-dialog" aria-labelledby="dialog-title"><div class="modal-head"><h2 id="dialog-title"></h2><button class="modal-close" type="button" aria-label="Schließen" id="close-dialog">×</button></div><div class="modal-body"><img id="dialog-image" alt=""><div><p id="dialog-description"></p><dl class="meta"><dt>Film von</dt><dd id="dialog-creator"></dd><dt>Jahr</dt><dd id="dialog-year"></dd><dt>Genre</dt><dd id="dialog-genre"></dd><dt>Quelle</dt><dd>YouTube</dd></dl><a class="watch-link" id="dialog-link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m6 3 15 9-15 9z"/></svg>Auf YouTube ansehen</a><p class="fine">Der Film öffnet sich auf dem Kanal der Filmschaffenden.</p></div></div></dialog>
+  <script>
+    const films = [
+      {id:'VxB5iCQVS0Q',title:'Whispers',creator:'Mohammed Alturki',year:2025,genre:'Mystery',description:'Ein verlassener Ort, eine wartende Seele und Stimmen, die den Weg zurück ins Leben weisen.',featured:true},
+      {id:'AUHpdxeUeW4',title:'See You Again',creator:'AI Coda',year:2024,genre:'Fantasy',description:'Eine dunkle Gestalt verfolgt eine junge Frau, die ihr vor Jahren entkommen ist.',featured:true},
+      {id:'ypAIXMww7po',title:'Unknown',creator:'Gabe Michael',year:2024,genre:'Sci-Fi',description:'Ein KI-Kurzfilm aus der zweiten Runway Gen:48 Ausgabe, ausgezeichnet für Art Direction.',featured:true},
+      {id:'qfC9u96wHXw',title:'Lapse',creator:'YZA Voku',year:2024,genre:'Sci-Fi',description:'Ein visuell gestalteter Kurzfilm aus der Runway Gen:48 Film Competition, ausgezeichnet für Craft.',featured:false},
+      {id:'7K65pYWa220',title:'Let Us Explore',creator:'Gabe Michael',year:2023,genre:'Drama',description:'Ein KI-generierter Wettbewerbsfilm aus Runway Gen:48, ausgezeichnet für seine Figurengestaltung.',featured:false}
+    ];
+    const thumbnail = film => `https://i.ytimg.com/vi/${film.id}/mqdefault.jpg`;
+    const videoUrl = film => `https://www.youtube.com/watch?v=${film.id}`;
+    const state={filter:'alle',query:'',view:'list'};
+    const results=document.getElementById('results');
+    const escapeHtml=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    function visibleFilms(){
+      let list=films.filter(f=>state.filter==='alle'||state.filter==='neu'||state.filter==='auswahl'||f.genre===state.filter);
+      if(state.filter==='neu')list=[...list].sort((a,b)=>b.year-a.year);
+      if(state.filter==='auswahl')list=list.filter(f=>f.featured);
+      if(state.query){const query=state.query.toLocaleLowerCase('de');list=list.filter(f=>[f.title,f.creator,f.genre,String(f.year)].some(value=>value.toLocaleLowerCase('de').includes(query)));}
+      return list;
+    }
+    function openFilm(id){const film=films.find(item=>item.id===id);if(!film)return;document.getElementById('dialog-title').textContent=film.title;document.getElementById('dialog-image').src=thumbnail(film);document.getElementById('dialog-image').alt=`Vorschaubild zu ${film.title}`;document.getElementById('dialog-description').textContent=film.description;document.getElementById('dialog-creator').textContent=film.creator;document.getElementById('dialog-year').textContent=film.year;document.getElementById('dialog-genre').textContent=film.genre;document.getElementById('dialog-link').href=videoUrl(film);document.getElementById('film-dialog').showModal();}
+    function render(){
+      const list=visibleFilms();
+      const labels={alle:'Alle KI-Kurzfilme',neu:'Neueste KI-Kurzfilme',auswahl:'Redaktionelle Auswahl'};
+      document.getElementById('catalog-title').textContent=labels[state.filter]||state.filter;
+      document.getElementById('count').textContent=`${list.length} ${list.length===1?'Eintrag':'Einträge'}`;
+      document.getElementById('result-summary').textContent=`${list.length} ${list.length===1?'Film':'Filme'}`;
+      document.getElementById('feature-section').hidden=!!state.query||!['alle','auswahl'].includes(state.filter);
+      document.querySelectorAll('[data-filter]').forEach(button=>button.classList.toggle('selected',button.dataset.filter===state.filter));
+      document.querySelectorAll('[data-nav]').forEach(button=>button.classList.toggle('active',button.dataset.nav===state.filter));
+      document.getElementById('list-view').classList.toggle('active',state.view==='list');document.getElementById('grid-view').classList.toggle('active',state.view==='grid');
+      document.getElementById('list-view').setAttribute('aria-pressed',state.view==='list');document.getElementById('grid-view').setAttribute('aria-pressed',state.view==='grid');
+      if(!list.length){results.innerHTML='<div class="empty">Keine Filme gefunden. Versuche einen anderen Suchbegriff oder ein anderes Genre.</div>';return;}
+      if(state.view==='grid'){results.innerHTML=`<div class="grid-view">${list.map(f=>`<article class="grid-card"><img src="${thumbnail(f)}" alt="" loading="lazy"><div><button type="button" data-open="${f.id}">${escapeHtml(f.title)}</button><small>${escapeHtml(f.creator)} · ${f.year} · ${escapeHtml(f.genre)}</small></div></article>`).join('')}</div>`;return;}
+      results.innerHTML=`<div class="table-wrap"><table class="film-table"><thead><tr><th>Titel</th><th>Genre</th><th>Jahr</th><th>Quelle</th></tr></thead><tbody>${list.map(f=>`<tr><td><div class="film-title"><img src="${thumbnail(f)}" alt="" loading="lazy"><button type="button" data-open="${f.id}">${escapeHtml(f.title)}</button></div></td><td class="table-muted">${escapeHtml(f.genre)}</td><td class="table-muted">${f.year}</td><td><span class="source-badge">YouTube</span></td></tr>`).join('')}</tbody></table></div>`;
+    }
+    document.getElementById('features').innerHTML=films.map(f=>`<a class="feature" href="${videoUrl(f)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(f.title)} auf YouTube ansehen"><img src="${thumbnail(f)}" alt="" loading="lazy"><span>${escapeHtml(f.title)}</span><small>${escapeHtml(f.creator)}</small></a>`).join('');
+    document.addEventListener('click',event=>{const open=event.target.closest('[data-open]');if(open)openFilm(open.dataset.open);const filter=event.target.closest('[data-filter]');if(filter){state.filter=filter.dataset.filter;render();}const nav=event.target.closest('[data-nav]');if(nav){if(nav.dataset.nav==='ueber'){document.querySelector('footer').scrollIntoView({behavior:'smooth'});return;}state.filter=nav.dataset.nav;render();}});
+    document.getElementById('search').addEventListener('input',event=>{state.query=event.target.value.trim();if(state.query)state.filter='alle';render();});
+    document.getElementById('list-view').addEventListener('click',()=>{state.view='list';render();});document.getElementById('grid-view').addEventListener('click',()=>{state.view='grid';render();});
+    document.getElementById('close-dialog').addEventListener('click',()=>document.getElementById('film-dialog').close());document.getElementById('film-dialog').addEventListener('click',event=>{if(event.target.id==='film-dialog')event.target.close();});
+    render();
+  </script>
+</body>
+</html>
