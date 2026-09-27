@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#16384b">
-  <meta name="description" content="KinoTom: kuratierte KI-Kurzfilme direkt von ihren Filmschaffenden auf YouTube entdecken.">
-  <title>KinoTom | KI-Kurzfilme entdecken</title>
+  <meta name="description" content="KinoTom: Toms Sammlung frei zugänglicher Kurzfilme, Open Movies und KI-Filme.">
+  <title>KinoTom | Freie Filme entdecken</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2316384b'/%3E%3Cpath d='M12 15h40v34H12z' fill='none' stroke='%23e8b05b' stroke-width='4'/%3E%3Cpath d='m28 24 14 8-14 8z' fill='%23e8b05b'/%3E%3C/svg%3E">
   <style>
     :root{color-scheme:light;--ink:#243b49;--muted:#647e8b;--line:#b8cad2;--blue:#2e617a;--deep:#16384b;--gold:#e8b05b;--paper:#f3f7f8;--row:#e7f0f4;--row-alt:#f5f9fa}
@@ -21,6 +21,51 @@
     footer{padding:18px 23px 24px;border-top:1px solid #cadce2;color:#5f7b89;font-size:12px;background:#e8f0f3}footer strong{color:#355a6c}.modal{border:0;padding:0;width:min(650px,calc(100vw - 28px));max-height:calc(100vh - 28px);background:#f3f7f8;color:var(--ink);box-shadow:0 14px 50px #0a2634aa}.modal::backdrop{background:#102b3bc9}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;color:#fff;background:linear-gradient(#648fa1,#24546d)}.modal-head h2{margin:0;font-size:18px}.modal-close{border:0;background:none;color:#fff;font-size:26px;line-height:1}.modal-body{display:grid;grid-template-columns:210px minmax(0,1fr);gap:17px;padding:18px}.modal-body img{width:100%;aspect-ratio:16/10;object-fit:cover;border:4px solid #fff;box-shadow:0 0 0 1px #b4c9d1}.modal-body p{margin:0 0 10px}.meta{display:grid;grid-template-columns:76px 1fr;gap:4px 8px;margin:12px 0 17px;font-size:13px}.meta dt{color:#6c8794}.meta dd{margin:0}.watch-link{display:inline-flex;gap:9px;align-items:center;padding:9px 13px;background:#d38a2f;color:#fff;text-decoration:none;font-weight:700;border:1px solid #9e641d}.watch-link:hover{background:#b87626}.watch-link svg{width:15px;height:15px}.fine{font-size:12px;color:#6c8794;margin-top:12px!important}
     @media(max-width:780px){.masthead{height:124px;padding:24px 16px}.masthead-note{display:none}.brand-name{font-size:32px}.brand-mark{width:55px;height:55px}.topbar{padding:0 8px;flex-wrap:wrap}.topbar nav{width:100%;overflow:auto}.topbar nav button{white-space:nowrap;height:43px;padding:0 13px}.search{width:100%;margin:0 0 8px}.layout{grid-template-columns:1fr;padding:12px;gap:11px}.sidebar{border:0;padding:0}.side-head{display:none}.side-section{display:flex;overflow:auto;padding:0;border:0}.side-section:nth-of-type(n+3){display:none}.side-label{display:none}.side-section button{width:auto;white-space:nowrap;padding:7px 12px;border:1px solid #cadce3}.side-note{display:none}.feature-strip{gap:8px;padding:9px}.feature:nth-child(n+4){display:none}.feature-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.bar small{display:none}.film-table th:nth-child(1){width:55%}.film-table th:nth-child(2){width:22%}.film-table th:nth-child(3){width:23%}.film-table th:nth-child(4),.film-table td:nth-child(4){display:none}.grid-view{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:520px){.brand-caption{font-size:10px}.film-table th:nth-child(3),.film-table td:nth-child(3){display:none}.film-table th:nth-child(1){width:69%}.film-table th:nth-child(2){width:31%}.film-title img{width:35px;height:25px}.film-table td{font-size:12px}.film-title{gap:6px}.feature span{font-size:11px}.intro-line{align-items:flex-start}.modal-body{grid-template-columns:1fr}.modal-body img{max-width:300px}}
+    .masthead{background:linear-gradient(90deg,#102b3cf2 0%,#16384bc9 37%,#16384b18 70%),url('masthead.jpg') center/cover}
+    .masthead::after{display:none}
+    .brand{margin-top:12px}
+    .feature-strip{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;justify-items:center;background:linear-gradient(#f2f7f9,#d8e8ef)}
+    .feature{width:100%;max-width:132px}
+    .feature img{aspect-ratio:2/3;object-fit:cover;object-position:center;border:4px solid #fff}
+    .feature span{font-size:13px}
+    .film-name{min-width:0}
+    .mobile-meta{display:none}
+    @media(max-width:780px){
+      .masthead{background-position:62% center}
+      .brand{margin-top:0}
+      .sidebar{display:grid;gap:6px}
+      .side-section:nth-of-type(n+3){display:flex}
+      .side-section{scrollbar-width:thin}
+      .side-section button{flex:none;border-radius:0}
+      .feature-strip{display:flex;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory}
+      .feature:nth-child(n+4){display:block}
+      .feature{flex:0 0 118px;scroll-snap-align:start}
+      .feature img{aspect-ratio:2/3}
+    }
+    @media(max-width:520px){
+      .masthead{height:108px;background-position:65% center}
+      .brand-name{font-size:27px}
+      .brand-mark{width:49px;height:49px}
+      .brand-caption{font-size:9px}
+      .topbar nav button{font-size:12px;padding:0 11px}
+      .layout{padding:9px;gap:9px}
+      .side-section button{font-size:13px;padding:8px 10px}
+      .intro-line{font-size:12px}
+      .feature-strip{margin-bottom:11px}
+      .film-table,.film-table tbody{display:block;width:100%}
+      .film-table thead{display:none}
+      .film-table tbody tr{display:grid;grid-template-columns:minmax(0,1fr) auto;min-height:63px}
+      .film-table td{height:auto;font-size:14px}
+      .film-table td:first-child{display:flex;align-items:center;min-width:0;padding:7px 8px}
+      .film-table td:nth-child(2),.film-table td:nth-child(3){display:none}
+      .film-table td:last-child{display:flex;align-items:center;padding:7px 8px}
+      .film-title img{width:64px;height:45px}
+      .film-title button{white-space:normal;line-height:1.2;font-size:14px}
+      .mobile-meta{display:block;margin-top:3px;color:#6a8490;font-size:12px}
+      .bar{padding-left:9px;padding-right:8px}
+      .bar strong{font-size:13px}
+      .section-footer span:first-child{max-width:73%}
+    }
   </style>
 </head>
 <body>
@@ -28,15 +73,15 @@
     <header class="masthead">
       <a class="brand" href="#start" aria-label="KinoTom Startseite">
         <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 3h18v26H7zM0 8h4v5H0zm0 11h4v5H0zM28 8h4v5h-4zm0 11h4v5h-4z" fill-rule="evenodd"/><path d="m13 10 11 6-11 6z" fill="#102b3c"/></svg></span>
-        <span><span class="brand-name">Kino<b>Tom</b></span><span class="brand-caption">Das Archiv für KI-Kurzfilme</span></span>
+        <span><span class="brand-name">Kino<b>Tom</b></span><span class="brand-caption">Freie Filme. Toms Auswahl.</span></span>
       </a>
-      <div class="masthead-note">Unabhängig kuratiert · Direkt zu den Filmschaffenden</div>
+      <div class="masthead-note">Filme entdecken · Direkt zu den Filmschaffenden</div>
     </header>
     <div class="topbar">
       <nav aria-label="Hauptnavigation">
         <button type="button" class="active" data-nav="alle">Start</button>
-        <button type="button" data-nav="neu">Neueste</button>
-        <button type="button" data-nav="auswahl">Auswahl</button>
+        <button type="button" data-nav="neu">Neue Filme</button>
+        <button type="button" data-nav="auswahl">Toms Auswahl</button>
         <button type="button" data-nav="ueber">Über KinoTom</button>
       </nav>
       <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="Film oder Filmschaffende suchen" aria-label="Filme suchen"></label>
@@ -44,33 +89,37 @@
     <div class="layout" id="start">
       <aside class="sidebar" aria-label="Katalogfilter">
         <div class="side-head"><div><span></span>Navigation</div></div>
-        <div class="side-section"><div class="side-label">Entdecken</div><button class="selected" type="button" data-filter="alle">Alle Kurzfilme</button><button type="button" data-filter="neu">Neueste</button><button type="button" data-filter="auswahl">Redaktionelle Auswahl</button></div>
-        <div class="side-section"><div class="side-label">Genres</div><button type="button" data-filter="Sci-Fi">Sci-Fi</button><button type="button" data-filter="Fantasy">Fantasy</button><button type="button" data-filter="Mystery">Mystery</button><button type="button" data-filter="Drama">Drama</button></div>
-        <p class="side-note">Alle Filme stammen von ihren YouTube-Kanälen. KinoTom speichert und streamt keine Videos selbst.</p>
+        <div class="side-section"><div class="side-label">Entdecken</div><button class="selected" type="button" data-filter="alle">Alle Filme</button><button type="button" data-filter="neu">Neueste</button><button type="button" data-filter="auswahl">Toms Auswahl</button></div>
+        <div class="side-section"><div class="side-label">Formate</div><button type="button" data-filter="KI-Film">KI-Filme</button><button type="button" data-filter="Open Movie">Open Movies</button></div>
+        <div class="side-section"><div class="side-label">Genres</div><button type="button" data-filter="Sci-Fi">Sci-Fi</button><button type="button" data-filter="Fantasy">Fantasy</button><button type="button" data-filter="Mystery">Mystery</button><button type="button" data-filter="Drama">Drama</button><button type="button" data-filter="Horror">Horror</button><button type="button" data-filter="Komödie">Komödie</button></div>
       </aside>
       <main>
         <section aria-labelledby="feature-title" id="feature-section">
-          <div class="bar"><strong id="feature-title">Im Fokus</strong><small>KI-Filmkunst aus unabhängigen Kanälen</small></div>
-          <div class="intro-line"><strong>Fünf Filme für den Anfang</strong><span>Zum Film auf YouTube</span></div>
+          <div class="bar"><strong id="feature-title">Toms Filmtipps</strong><small>Frei zugänglich auf den Originalkanälen</small></div>
+          <div class="intro-line"><strong>Heute im Programm</strong><span>Zum Film auf YouTube</span></div>
           <div class="feature-strip" id="features"></div>
         </section>
         <section aria-labelledby="catalog-title">
-          <div class="bar catalog-head"><strong id="catalog-title">Alle KI-Kurzfilme</strong><div class="bar-actions"><small id="count">5 Einträge</small><button type="button" class="icon-btn active" id="list-view" title="Listenansicht" aria-label="Listenansicht" aria-pressed="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h3v3H4zm5 0h11v3H9zM4 11h3v3H4zm5 0h11v3H9zM4 17h3v3H4zm5 0h11v3H9z"/></svg></button><button type="button" class="icon-btn" id="grid-view" title="Kachelansicht" aria-label="Kachelansicht" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg></button></div></div>
+          <div class="bar catalog-head"><strong id="catalog-title">Alle Filme</strong><div class="bar-actions"><small id="count">9 Einträge</small><button type="button" class="icon-btn active" id="list-view" title="Listenansicht" aria-label="Listenansicht" aria-pressed="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h3v3H4zm5 0h11v3H9zM4 11h3v3H4zm5 0h11v3H9zM4 17h3v3H4zm5 0h11v3H9z"/></svg></button><button type="button" class="icon-btn" id="grid-view" title="Kachelansicht" aria-label="Kachelansicht" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg></button></div></div>
           <div id="results"></div>
-          <div class="section-footer"><span>Quelle: öffentliche YouTube-Seiten der Filmschaffenden</span><span id="result-summary">5 Filme</span></div>
+          <div class="section-footer"><span>Alle Titel führen zum offiziellen YouTube-Kanal.</span><span id="result-summary">9 Filme</span></div>
         </section>
       </main>
     </div>
-    <footer><strong>KinoTom</strong> · Privater Entwurf · Die Titel führen zu YouTube. Bild- und Filmrechte verbleiben bei den jeweiligen Filmschaffenden. Der Projektname ist noch nicht abschließend geprüft.</footer>
+    <footer><strong>KinoTom</strong> · Privater Entwurf · Frei zugänglich bedeutet nicht frei von Urheberrechten. Filme und Bilder gehören den jeweiligen Filmschaffenden. Der Projektname ist noch nicht abschließend geprüft.</footer>
   </div>
-  <dialog class="modal" id="film-dialog" aria-labelledby="dialog-title"><div class="modal-head"><h2 id="dialog-title"></h2><button class="modal-close" type="button" aria-label="Schließen" id="close-dialog">×</button></div><div class="modal-body"><img id="dialog-image" alt=""><div><p id="dialog-description"></p><dl class="meta"><dt>Film von</dt><dd id="dialog-creator"></dd><dt>Jahr</dt><dd id="dialog-year"></dd><dt>Genre</dt><dd id="dialog-genre"></dd><dt>Quelle</dt><dd>YouTube</dd></dl><a class="watch-link" id="dialog-link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m6 3 15 9-15 9z"/></svg>Auf YouTube ansehen</a><p class="fine">Der Film öffnet sich auf dem Kanal der Filmschaffenden.</p></div></div></dialog>
+  <dialog class="modal" id="film-dialog" aria-labelledby="dialog-title"><div class="modal-head"><h2 id="dialog-title"></h2><button class="modal-close" type="button" aria-label="Schließen" id="close-dialog">×</button></div><div class="modal-body"><img id="dialog-image" alt=""><div><p id="dialog-description"></p><dl class="meta"><dt>Film von</dt><dd id="dialog-creator"></dd><dt>Jahr</dt><dd id="dialog-year"></dd><dt>Genre</dt><dd id="dialog-genre"></dd><dt>Format</dt><dd id="dialog-kind"></dd><dt>Quelle</dt><dd>YouTube</dd></dl><a class="watch-link" id="dialog-link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m6 3 15 9-15 9z"/></svg>Auf YouTube ansehen</a><p class="fine">Der Film öffnet sich auf dem Kanal der Filmschaffenden.</p></div></div></dialog>
   <script>
     const films = [
-      {id:'VxB5iCQVS0Q',title:'Whispers',creator:'Mohammed Alturki',year:2025,genre:'Mystery',description:'Ein verlassener Ort, eine wartende Seele und Stimmen, die den Weg zurück ins Leben weisen.',featured:true},
-      {id:'AUHpdxeUeW4',title:'See You Again',creator:'AI Coda',year:2024,genre:'Fantasy',description:'Eine dunkle Gestalt verfolgt eine junge Frau, die ihr vor Jahren entkommen ist.',featured:true},
-      {id:'ypAIXMww7po',title:'Unknown',creator:'Gabe Michael',year:2024,genre:'Sci-Fi',description:'Ein KI-Kurzfilm aus der zweiten Runway Gen:48 Ausgabe, ausgezeichnet für Art Direction.',featured:true},
-      {id:'qfC9u96wHXw',title:'Lapse',creator:'YZA Voku',year:2024,genre:'Sci-Fi',description:'Ein visuell gestalteter Kurzfilm aus der Runway Gen:48 Film Competition, ausgezeichnet für Craft.',featured:false},
-      {id:'7K65pYWa220',title:'Let Us Explore',creator:'Gabe Michael',year:2023,genre:'Drama',description:'Ein KI-generierter Wettbewerbsfilm aus Runway Gen:48, ausgezeichnet für seine Figurengestaltung.',featured:false}
+      {id:'VxB5iCQVS0Q',title:'Whispers',creator:'Mohammed Alturki',year:2025,genre:'Mystery',kind:'KI-Film',description:'Ein verlassener Ort, eine wartende Seele und Stimmen, die den Weg zurück ins Leben weisen.',featured:true},
+      {id:'AUHpdxeUeW4',title:'See You Again',creator:'AI Coda',year:2024,genre:'Fantasy',kind:'KI-Film',description:'Eine dunkle Gestalt verfolgt eine junge Frau, die ihr vor Jahren entkommen ist.',featured:true},
+      {id:'ypAIXMww7po',title:'Unknown',creator:'Gabe Michael',year:2024,genre:'Sci-Fi',kind:'KI-Film',description:'Ein KI-Kurzfilm aus der zweiten Runway Gen:48 Ausgabe, ausgezeichnet für Art Direction.',featured:false},
+      {id:'qfC9u96wHXw',title:'Lapse',creator:'YZA Voku',year:2024,genre:'Sci-Fi',kind:'KI-Film',description:'Ein visuell gestalteter Kurzfilm aus der Runway Gen:48 Film Competition, ausgezeichnet für Craft.',featured:false},
+      {id:'7K65pYWa220',title:'Let Us Explore',creator:'Gabe Michael',year:2023,genre:'Drama',kind:'KI-Film',description:'Ein KI-generierter Wettbewerbsfilm aus Runway Gen:48, ausgezeichnet für seine Figurengestaltung.',featured:false},
+      {id:'u9lj-c29dxI',title:'Wing It!',creator:'Blender Studio',year:2023,genre:'Sci-Fi',kind:'Open Movie',description:'Ein Ingenieur und ein angehender Pilot werden in einer außer Kontrolle geratenen Raumfähre in die Luft geschleudert.',featured:true},
+      {id:'_cMxraX_5RE',title:'Sprite Fright',creator:'Blender Studio',year:2021,genre:'Horror',kind:'Open Movie',description:'Ein Ausflug in den Wald entwickelt sich für eine Gruppe Jugendlicher zur unheimlichen Begegnung.',featured:true},
+      {id:'PVGeM40dABA',title:'Coffee Run',creator:'Blender Studio',year:2020,genre:'Drama',kind:'Open Movie',description:'Eine junge Frau durchlebt bei viel Kaffee Erinnerungen an eine vergangene Beziehung.',featured:false},
+      {id:'aqz-KE-bpKQ',title:'Big Buck Bunny',creator:'Blender',year:2008,genre:'Komödie',kind:'Open Movie',description:'Der bekannte offene Animationsfilm der Blender Foundation über einen gutmütigen Hasen und seine Gegenspieler.',featured:true}
     ];
     const thumbnail = film => `https://i.ytimg.com/vi/${film.id}/mqdefault.jpg`;
     const videoUrl = film => `https://www.youtube.com/watch?v=${film.id}`;
@@ -78,16 +127,16 @@
     const results=document.getElementById('results');
     const escapeHtml=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
     function visibleFilms(){
-      let list=films.filter(f=>state.filter==='alle'||state.filter==='neu'||state.filter==='auswahl'||f.genre===state.filter);
+      let list=films.filter(f=>state.filter==='alle'||state.filter==='neu'||state.filter==='auswahl'||f.genre===state.filter||f.kind===state.filter);
       if(state.filter==='neu')list=[...list].sort((a,b)=>b.year-a.year);
       if(state.filter==='auswahl')list=list.filter(f=>f.featured);
-      if(state.query){const query=state.query.toLocaleLowerCase('de');list=list.filter(f=>[f.title,f.creator,f.genre,String(f.year)].some(value=>value.toLocaleLowerCase('de').includes(query)));}
+      if(state.query){const query=state.query.toLocaleLowerCase('de');list=list.filter(f=>[f.title,f.creator,f.genre,f.kind,String(f.year)].some(value=>value.toLocaleLowerCase('de').includes(query)));}
       return list;
     }
-    function openFilm(id){const film=films.find(item=>item.id===id);if(!film)return;document.getElementById('dialog-title').textContent=film.title;document.getElementById('dialog-image').src=thumbnail(film);document.getElementById('dialog-image').alt=`Vorschaubild zu ${film.title}`;document.getElementById('dialog-description').textContent=film.description;document.getElementById('dialog-creator').textContent=film.creator;document.getElementById('dialog-year').textContent=film.year;document.getElementById('dialog-genre').textContent=film.genre;document.getElementById('dialog-link').href=videoUrl(film);document.getElementById('film-dialog').showModal();}
+    function openFilm(id){const film=films.find(item=>item.id===id);if(!film)return;document.getElementById('dialog-title').textContent=film.title;document.getElementById('dialog-image').src=thumbnail(film);document.getElementById('dialog-image').alt=`Vorschaubild zu ${film.title}`;document.getElementById('dialog-description').textContent=film.description;document.getElementById('dialog-creator').textContent=film.creator;document.getElementById('dialog-year').textContent=film.year;document.getElementById('dialog-genre').textContent=film.genre;document.getElementById('dialog-kind').textContent=film.kind;document.getElementById('dialog-link').href=videoUrl(film);document.getElementById('film-dialog').showModal();}
     function render(){
       const list=visibleFilms();
-      const labels={alle:'Alle KI-Kurzfilme',neu:'Neueste KI-Kurzfilme',auswahl:'Redaktionelle Auswahl'};
+      const labels={alle:'Alle Filme',neu:'Neueste Filme',auswahl:'Toms Auswahl','KI-Film':'KI-Filme','Open Movie':'Open Movies'};
       document.getElementById('catalog-title').textContent=labels[state.filter]||state.filter;
       document.getElementById('count').textContent=`${list.length} ${list.length===1?'Eintrag':'Einträge'}`;
       document.getElementById('result-summary').textContent=`${list.length} ${list.length===1?'Film':'Filme'}`;
@@ -97,10 +146,10 @@
       document.getElementById('list-view').classList.toggle('active',state.view==='list');document.getElementById('grid-view').classList.toggle('active',state.view==='grid');
       document.getElementById('list-view').setAttribute('aria-pressed',state.view==='list');document.getElementById('grid-view').setAttribute('aria-pressed',state.view==='grid');
       if(!list.length){results.innerHTML='<div class="empty">Keine Filme gefunden. Versuche einen anderen Suchbegriff oder ein anderes Genre.</div>';return;}
-      if(state.view==='grid'){results.innerHTML=`<div class="grid-view">${list.map(f=>`<article class="grid-card"><img src="${thumbnail(f)}" alt="" loading="lazy"><div><button type="button" data-open="${f.id}">${escapeHtml(f.title)}</button><small>${escapeHtml(f.creator)} · ${f.year} · ${escapeHtml(f.genre)}</small></div></article>`).join('')}</div>`;return;}
-      results.innerHTML=`<div class="table-wrap"><table class="film-table"><thead><tr><th>Titel</th><th>Genre</th><th>Jahr</th><th>Quelle</th></tr></thead><tbody>${list.map(f=>`<tr><td><div class="film-title"><img src="${thumbnail(f)}" alt="" loading="lazy"><button type="button" data-open="${f.id}">${escapeHtml(f.title)}</button></div></td><td class="table-muted">${escapeHtml(f.genre)}</td><td class="table-muted">${f.year}</td><td><span class="source-badge">YouTube</span></td></tr>`).join('')}</tbody></table></div>`;
+      if(state.view==='grid'){results.innerHTML=`<div class="grid-view">${list.map(f=>`<article class="grid-card"><img src="${thumbnail(f)}" alt="" loading="lazy"><div><button type="button" data-open="${f.id}">${escapeHtml(f.title)}</button><small>${escapeHtml(f.creator)} · ${f.year} · ${escapeHtml(f.kind)}</small></div></article>`).join('')}</div>`;return;}
+      results.innerHTML=`<div class="table-wrap"><table class="film-table"><thead><tr><th>Titel</th><th>Genre</th><th>Jahr</th><th>Quelle</th></tr></thead><tbody>${list.map(f=>`<tr><td><div class="film-title"><img src="${thumbnail(f)}" alt="" loading="lazy"><span class="film-name"><button type="button" data-open="${f.id}">${escapeHtml(f.title)}</button><small class="mobile-meta">${escapeHtml(f.genre)} · ${f.year}</small></span></div></td><td class="table-muted">${escapeHtml(f.genre)}</td><td class="table-muted">${f.year}</td><td><span class="source-badge">YouTube</span></td></tr>`).join('')}</tbody></table></div>`;
     }
-    document.getElementById('features').innerHTML=films.map(f=>`<a class="feature" href="${videoUrl(f)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(f.title)} auf YouTube ansehen"><img src="${thumbnail(f)}" alt="" loading="lazy"><span>${escapeHtml(f.title)}</span><small>${escapeHtml(f.creator)}</small></a>`).join('');
+    document.getElementById('features').innerHTML=films.filter(f=>f.featured).map(f=>`<a class="feature" href="${videoUrl(f)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(f.title)} auf YouTube ansehen"><img src="${thumbnail(f)}" alt="" loading="lazy"><span>${escapeHtml(f.title)}</span><small>${escapeHtml(f.creator)}</small></a>`).join('');
     document.addEventListener('click',event=>{const open=event.target.closest('[data-open]');if(open)openFilm(open.dataset.open);const filter=event.target.closest('[data-filter]');if(filter){state.filter=filter.dataset.filter;render();}const nav=event.target.closest('[data-nav]');if(nav){if(nav.dataset.nav==='ueber'){document.querySelector('footer').scrollIntoView({behavior:'smooth'});return;}state.filter=nav.dataset.nav;render();}});
     document.getElementById('search').addEventListener('input',event=>{state.query=event.target.value.trim();if(state.query)state.filter='alle';render();});
     document.getElementById('list-view').addEventListener('click',()=>{state.view='list';render();});document.getElementById('grid-view').addEventListener('click',()=>{state.view='grid';render();});
