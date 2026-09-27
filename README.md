@@ -1,6 +1,6 @@
 # KinoTom
 
-Privater Prototyp eines kuratierten Filmkatalogs. Die Filme werden auf den
+Prototyp eines kuratierten Filmkatalogs. Die Filme werden auf den
 YouTube-Kanälen ihrer jeweiligen Filmschaffenden geöffnet; KinoTom hostet keine
 Filmdateien.
 
@@ -12,10 +12,10 @@ Die statische Website liegt in `dist/`. Lokal starten:
 python3 -m http.server 8765 --directory dist
 ```
 
-Die aktuelle private Vorschau wird über Sites gehostet. Der Code kann später
-mit GitHub Pages veröffentlicht werden, indem ein GitHub-Actions-Workflow
-`dist/` als Pages-Artefakt bereitstellt. GitHub Pages ist für die öffentliche
-Freigabe noch nicht aktiviert.
+Die Seite wird bei jedem Push auf `main` per GitHub Actions aus `dist/` auf
+GitHub Pages veröffentlicht. Die bisherige Sites-Vorschau ist davon getrennt
+und wird durch GitHub-Pushes nicht automatisch aktualisiert.
 
-Der Name KinoTom, Rechtstexte sowie Werbung und Analytics sind vor einer
-öffentlichen Freigabe zu klären.
+Die Pages-Version ist eine öffentliche Vorschau mit `noindex`. Der Name
+KinoTom, Rechtstexte sowie Werbung und Analytics sind vor dem offiziellen
+Launch zu klären.
